@@ -2,11 +2,19 @@ const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => {
-    res.send("Hello, World!");
-});
+app.use(express.json());
 
-app.get();
+// DB connection
+const conn = require("./db/conn");
+conn();
+
+// routes
+const routes = require("./routes/router");
+
+app.use("/api", routes);
 
 const PORT = 3333;
-app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}.`));
+
+
+

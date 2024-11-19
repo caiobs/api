@@ -1,0 +1,43 @@
+POST http://localhost:3333/api/products
+Content-Type: application/json
+
+{
+    "name": "Produto 2",
+    "description": "Descrição do produto",
+    "price": 20,
+    "stock": 60
+}
+
+###
+GET http://localhost:3333/api/products
+
+###
+GET http://localhost:3333/api/products/id
+
+###
+DELETE http://localhost:3333/api/products/id
+
+###
+PUT http://localhost:3333/api/products/id
+Content-Type: application/json
+
+{
+    "name": "Produto 2 atualizado",
+    "description": "Descrição do produto",
+    "price": 30,
+    "stock": 60
+}
+
+###
+POST http://localhost:3333/api/catalogs
+Content-Type: application/json
+
+{
+    "user": "Caio"
+}
+
+###
+GET http://localhost:3333/api/catalogs
+
+###
+GET http://localhost:3333/api/catalogs/id
