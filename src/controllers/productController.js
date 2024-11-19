@@ -70,7 +70,7 @@ const productController = {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
-            stock: req.body.stock,
+            storage: req.body.storage,
         };
 
         const updatedProduct = await ProductModel.findByIdAndUpdate(id, product);
