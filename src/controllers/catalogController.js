@@ -54,7 +54,23 @@ const catalogController = {
 
         res.status(200).json({ deletedCatalog, msg: "Catalog deleted." });
     },
+    update: async (req, res) => {
+        const id = req.params.id;
 
+        const catalog = {
+            user: req.body.user,
+            products: req.body.products,
+        };
+
+        const updatedCatalog = await CatalogModel.findByIdAndUpdate(id, catalog);
+
+        if(!updatedCatalog) {
+            res.status(404).json({ msg: "Catalog not found." });
+            return;
+        };
+
+        res.status(200).json({ catalog, msg: "Catalog updated." });
+    }
 
 };
 

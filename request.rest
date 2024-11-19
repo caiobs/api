@@ -5,7 +5,7 @@ Content-Type: application/json
     "name": "Produto 2",
     "description": "Descrição do produto",
     "price": 20,
-    "stock": 60
+    "storage": 60
 }
 
 ###
@@ -25,7 +25,7 @@ Content-Type: application/json
     "name": "Produto 2 atualizado",
     "description": "Descrição do produto",
     "price": 30,
-    "stock": 60
+    "storage": 60
 }
 
 ###
@@ -41,3 +41,14 @@ GET http://localhost:3333/api/catalogs
 
 ###
 GET http://localhost:3333/api/catalogs/id
+
+###
+DELETE http://localhost:3333/api/catalogs/id
+
+###
+PUT http://localhost:3333/api/catalogs/id
+Content-Type: application/json
+
+{
+    "user": "Caio Brandão"
+}
