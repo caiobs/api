@@ -50,7 +50,7 @@ const catalogController = {
 
             const deletedCatalog = await CatalogModel.findByIdAndDelete(id);
 
-            res.status(200).json({ deletedCatalog, msg: "Catalog deleted." });
+            res.status(204).json({ deletedCatalog, msg: "Catalog deleted." });
         } catch (error) {
             console.log(error);
         }

@@ -53,7 +53,7 @@ const productController = {
 
             const deletedProduct = await ProductModel.findByIdAndDelete(id);
 
-            res.status(200).json({ deletedProduct, msg: "Product deleted." });
+            res.status(204).json({ deletedProduct, msg: "Product deleted." });
 
         } catch (error) {
             console.log(error);
