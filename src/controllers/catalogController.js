@@ -1,18 +1,16 @@
-const CatalogModel = require("../models/Catalog");
+import CatalogModel from "../models/Catalog.js";
 
 const catalogController = {
     create: async (req, res) => {
         try {
-
             const catalog = {
                 user: req.body.user,
                 products: req.body.products,
-            }
+            };
 
             const response = await CatalogModel.create(catalog);
 
             res.status(201).json({ response, msg: "Catalog created." });
-
         } catch (error) {
             console.log(error);
         }
@@ -20,21 +18,20 @@ const catalogController = {
     getAll: async (req, res) => {
         try {
             const catalogs = await CatalogModel.find();
-
             res.json(catalogs);
         } catch (error) {
             console.log(error);
         }
     },
-    get: async(req, res) => {
+    get: async (req, res) => {
         try {
             const id = req.params.id;
             const catalog = await CatalogModel.findById(id);
 
-            if(!catalog) {
+            if (!catalog) {
                 res.status(404).json({ msg: "Catalog not found." });
                 return;
-            };
+            }
 
             res.json(catalog);
         } catch (error) {
@@ -42,36 +39,43 @@ const catalogController = {
         }
     },
     delete: async (req, res) => {
-        const id = req.params.id;
-        const catalog = await CatalogModel.findById(id);
+        try {
+            const id = req.params.id;
+            const catalog = await CatalogModel.findById(id);
 
-        if(!catalog) {
-            res.status(404).json({ msg: "Catalog not found." });
-            return;
-        }   
+            if (!catalog) {
+                res.status(404).json({ msg: "Catalog not found." });
+                return;
+            }
 
-        const deletedCatalog = await CatalogModel.findByIdAndDelete(id);
+            const deletedCatalog = await CatalogModel.findByIdAndDelete(id);
 
-        res.status(200).json({ deletedCatalog, msg: "Catalog deleted." });
+            res.status(200).json({ deletedCatalog, msg: "Catalog deleted." });
+        } catch (error) {
+            console.log(error);
+        }
     },
     update: async (req, res) => {
-        const id = req.params.id;
+        try {
+            const id = req.params.id;
 
-        const catalog = {
-            user: req.body.user,
-            products: req.body.products,
-        };
+            const catalog = {
+                user: req.body.user,
+                products: req.body.products,
+            };
 
-        const updatedCatalog = await CatalogModel.findByIdAndUpdate(id, catalog);
+            const updatedCatalog = await CatalogModel.findByIdAndUpdate(id, catalog, { new: true });
 
-        if(!updatedCatalog) {
-            res.status(404).json({ msg: "Catalog not found." });
-            return;
-        };
+            if (!updatedCatalog) {
+                res.status(404).json({ msg: "Catalog not found." });
+                return;
+            }
 
-        res.status(200).json({ catalog, msg: "Catalog updated." });
+            res.status(200).json({ catalog: updatedCatalog, msg: "Catalog updated." });
+        } catch (error) {
+            console.log(error);
+        }
     }
-
 };
 
-module.exports = catalogController;
+export default catalogController;

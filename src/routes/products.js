@@ -1,6 +1,7 @@
-const router = require("express").Router();
+import { Router } from "express";
+import productController from "../controllers/productController.js";
 
-const productController = require("../controllers/productController");
+const router = Router();
 
 // functions
 router
@@ -23,5 +24,4 @@ router
     .route("/products/:id")
     .put((req, res) => productController.update(req, res));
 
-
-module.exports = router;
+export default router;

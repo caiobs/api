@@ -1,15 +1,15 @@
-const express = require("express");
+import express from "express";
 
 const app = express();
 
 app.use(express.json());
 
 // DB connection
-const conn = require("./db/conn");
+import conn from "./db/conn.js";
 conn();
 
 // routes
-const routes = require("./routes/router");
+import routes from "./routes/router.js";
 
 app.use("/api", routes);
 

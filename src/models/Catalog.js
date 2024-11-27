@@ -1,20 +1,21 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import { productSchema } from "./Product.js";
 
 const { Schema } = mongoose;
 
-const { productSchema } = require("./Product");
-
-const catalogSchema = new Schema({
-    user: {
-        type: String,
-        required: true,
+const catalogSchema = new Schema(
+    {
+        user: {
+            type: String,
+            required: true,
+        },
+        products: {
+            type: [productSchema],
+        },
     },
-    products: {
-        type: [productSchema],
-    },
-}, { timestamps: true }
+    { timestamps: true }
 );
 
 const Catalog = mongoose.model("Catalog", catalogSchema);
 
-module.exports = Catalog;
+export default Catalog;

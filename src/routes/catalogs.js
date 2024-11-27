@@ -1,6 +1,7 @@
-const router = require("express").Router();
+import { Router } from "express";
+import catalogController from "../controllers/catalogController.js";
 
-const catalogController = require("../controllers/catalogController");
+const router = Router();
 
 // functions
 router.route("/catalogs").post((req, res) => catalogController.create(req, res));
@@ -13,4 +14,4 @@ router.route("/catalogs/:id").delete((req, res) => catalogController.delete(req,
 
 router.route("/catalogs/:id").put((req, res) => catalogController.update(req, res));
 
-module.exports = router;
+export default router;

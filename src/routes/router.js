@@ -1,13 +1,13 @@
-const router = require("express").Router();
+import { Router } from "express";
+import productRouter from "./products.js";
+import catalogRouter from "./catalogs.js";
+
+const router = Router();
 
 // products routes
-const productRouter = require("./products");
-
 router.use("/", productRouter);
 
 // catalogs routes
-const catalogRouter = require("./catalogs");
-
 router.use("/", catalogRouter);
 
-module.exports = router;
+export default router;
