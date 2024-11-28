@@ -2,10 +2,10 @@ POST http://localhost:3333/api/products
 Content-Type: application/json
 
 {
-    "name": "Produto 2",
+    "name": "Produto 3",
     "description": "Descrição do produto",
-    "price": 20,
-    "storage": 60
+    "price": 50,
+    "storage": 100
 }
 
 ###
